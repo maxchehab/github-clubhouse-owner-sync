@@ -15,6 +15,20 @@ interface GitHubMember {
   avatar_url: string;
 }
 
+export async function getGitHubOrgMembers(
+  token: string,
+  orgID: string,
+): Promise<GitHubMember[]> {
+  const { data } = await Axios.get<GitHubMember[]>(
+    `https://api.github.com/orgs/${orgID}/members`,
+    {
+      params: { access_token: token },
+    },
+  );
+
+  return data;
+}
+
 export async function isMemberOfOrg(
   token: string,
   login: string,

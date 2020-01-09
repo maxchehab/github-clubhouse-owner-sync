@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api/github/members with GET api/github/members returns session without token 1`] = `
+Array [
+  Object {
+    "avatar": "https://example.com/avatar.png",
+    "id": "johnsmith",
+  },
+  Object {
+    "avatar": "https://example.com/avatar1.png",
+    "id": "johnsmith1",
+  },
+]
+`;
+
+exports[`api/github/members with GET api/github/members returns session without token 2`] = `
+Array [
+  Object {
+    "avatar": "https://example.com/avatar.png",
+    "id": "johnsmith",
+  },
+  Object {
+    "avatar": "https://example.com/avatar1.png",
+    "id": "johnsmith1",
+  },
+]
+`;

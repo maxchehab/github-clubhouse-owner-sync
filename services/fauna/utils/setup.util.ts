@@ -2,6 +2,8 @@ import { query as q, Client } from 'faunadb';
 
 import createSessions from '../migrations/create-sessions';
 import sleep from '../../../common/util/sleep.util';
+import createGitHubMembers from '../migrations/create-github-members';
+import createClubhouseMembers from '../migrations/create-clubhouse-members';
 
 type Migration = (client: Client) => Promise<void>;
 
@@ -13,7 +15,11 @@ const client = new Client({
   secret: process.env.FAUNA_SECRET as string,
 });
 
-const migrations: Migration[] = [createSessions];
+const migrations: Migration[] = [
+  createSessions,
+  createGitHubMembers,
+  createClubhouseMembers,
+];
 
 export default async function setupFauna(options: MigrationOptions = {}) {
   if (options.dropSchema) {
