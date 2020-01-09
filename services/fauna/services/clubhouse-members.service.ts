@@ -1,14 +1,13 @@
 import { query as q, Client } from 'faunadb';
-import { ulid } from 'ulid';
 
-import GitHubMember from '../../../common/interfaces/github-member.interface';
+import ClubhouseMember from '../../../common/interfaces/clubhouse-member.interface';
 
 const client = new Client({
   secret: process.env.FAUNA_SECRET as string,
 });
 
-export function bulkUpsertGitHubMembers(members: GitHubMember[]) {
-  return client.query<GitHubMember[]>(
+export function bulkUpsertClubhouseMembers(members: ClubhouseMember[]) {
+  return client.query<ClubhouseMember[]>(
     q.Map(
       members,
       q.Lambda(
@@ -16,7 +15,7 @@ export function bulkUpsertGitHubMembers(members: GitHubMember[]) {
         q.Let(
           {
             matchRef: q.Match(
-              q.Index('github_member_by_id'),
+              q.Index('clubhouse_member_by_id'),
               q.Select('id', q.Var('x')),
             ),
           },
@@ -25,7 +24,9 @@ export function bulkUpsertGitHubMembers(members: GitHubMember[]) {
             q.Update(q.Select(['ref'], q.Get(q.Var('matchRef'))), {
               data: q.Var('x'),
             }),
-            q.Create(q.Collection('github_members'), { data: q.Var('x') }),
+            q.Create(q.Collection('clubhouse_members'), {
+              data: q.Var('x'),
+            }),
           ),
         ),
       ),
