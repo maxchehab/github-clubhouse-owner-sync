@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "fauna:setup": "ts-node scripts/setup-fauna.ts",
+    "fauna:setup": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/setup-fauna.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "yarn jest"
   },
