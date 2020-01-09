@@ -29,7 +29,7 @@ export default lambda(async (req: NextApiRequest, res: NextApiResponse) => {
     );
   }
 
-  const session = await createSession(member.name, token);
+  const session = await createSession(member.name, token, member.avatar_url);
 
   res.setHeader('location', '/');
   res.setHeader(

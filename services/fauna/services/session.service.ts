@@ -11,6 +11,7 @@ const client = new Client({
 export async function createSession(
   name: string,
   token: string,
+  avatar: string,
 ): Promise<Session> {
   const expires_at = new Date();
   expires_at.setDate(new Date().getDate() + 1);
@@ -20,6 +21,7 @@ export async function createSession(
     expires_at: expires_at.getTime(),
     name,
     token,
+    avatar,
   };
 
   await client.query(

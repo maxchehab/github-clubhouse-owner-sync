@@ -29,6 +29,7 @@ describe('api/github/session', () => {
           expires_at: new Date().getTime() + 1000,
           token: 'access-token',
           id: 'sess_01DY49R4RBSET4H39RX7JKR0AG',
+          avatar: 'https://example.com/avatar.png',
         }));
     });
 
@@ -40,7 +41,7 @@ describe('api/github/session', () => {
       });
 
       expect(status).toEqual(200);
-      expect(data).toMatchSnapshot();
+      expect(data).toMatchSnapshot({ expires_at: expect.any(Number) });
     });
   });
 });

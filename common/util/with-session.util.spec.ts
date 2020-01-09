@@ -62,6 +62,7 @@ describe('withSession', () => {
           expires_at: new Date().getTime() + 1000,
           token: 'access-token',
           id: 'sess_01DY49R4RBSET4H39RX7JKR0AG',
+          avatar: 'https://example.com/avatar.png',
         }));
     });
 

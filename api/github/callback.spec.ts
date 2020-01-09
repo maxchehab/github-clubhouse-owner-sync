@@ -30,6 +30,7 @@ describe('api/github/callback', () => {
           .mockImplementationOnce(async () => ({
             login: 'username',
             name: 'John Smith',
+            avatar_url: 'https://example.com/avatar.png',
           }));
 
         jest
@@ -47,6 +48,7 @@ describe('api/github/callback', () => {
             name: 'John Smith',
             expires_at: 10000,
             token: 'access-token',
+            avatar: 'https://example.com/avatar.png',
           }));
       });
 
@@ -136,6 +138,7 @@ describe('api/github/callback', () => {
             .mockImplementationOnce(async () => ({
               login: 'username',
               name: 'John Smith',
+              avatar_url: 'https://example.com/avatar.png',
             }));
 
           jest

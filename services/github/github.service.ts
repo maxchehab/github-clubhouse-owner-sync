@@ -12,6 +12,7 @@ interface AccessTokenResponse {
 interface GitHubMember {
   name: string;
   login: string;
+  avatar_url: string;
 }
 
 export async function isMemberOfOrg(
