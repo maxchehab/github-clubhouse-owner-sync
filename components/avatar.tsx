@@ -1,4 +1,4 @@
-import { Pane, Avatar, Popover, Icon, Position, Paragraph } from 'evergreen-ui';
+import { Pane, Avatar, Popover, Icon, Position, Menu } from 'evergreen-ui';
 
 interface SessionAvatarProps {
   name: string;
@@ -9,25 +9,13 @@ export default ({ name, avatar }: SessionAvatarProps) => (
   <Popover
     position={Position.BOTTOM_RIGHT}
     content={() => (
-      <Pane
-        alignItems="center"
-        display="flex"
-        flexDirection="column"
-        width={200}
-      >
-        <a href="/api/logout" style={{ textDecoration: 'none' }}>
-          <Pane
-            alignItems={'start'}
-            display={'flex'}
-            flexDirection={'column'}
-            padding={15}
-            width={200}
-            borderBottom
-          >
-            <Paragraph size={500}>Logout</Paragraph>
-          </Pane>
-        </a>
-      </Pane>
+      <Menu>
+        <Menu.Group>
+          <a href="/api/logout" style={{ textDecoration: 'none' }}>
+            <Menu.Item intent="danger">Logout</Menu.Item>
+          </a>
+        </Menu.Group>
+      </Menu>
     )}
   >
     <Pane
