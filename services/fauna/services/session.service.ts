@@ -44,3 +44,13 @@ export async function findSessionByID(id: string): Promise<Session | null> {
     return null;
   }
 }
+
+export async function deleteSessionByID(id: string) {
+  try {
+    return await client.query(
+      q.Delete(q.Select('ref', q.Get(q.Match(q.Index('session_by_id'), id)))),
+    );
+  } catch (_error) {
+    return null;
+  }
+}

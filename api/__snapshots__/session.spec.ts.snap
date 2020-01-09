@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`api/github/session with GET api/github/session returns session without token 1`] = `
+exports[`api/session with GET api/session returns session without token 1`] = `
 Object {
   "avatar": "https://example.com/avatar.png",
   "expires_at": Any<Number>,

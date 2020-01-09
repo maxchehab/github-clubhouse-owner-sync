@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api/logout with GET api/logout deletes session 1`] = `
+Array [
+  "sid=; Expires=Thu, 01 Jan 1970 00:00:00 GMT;",
+]
+`;
