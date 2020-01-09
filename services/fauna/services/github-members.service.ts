@@ -1,14 +1,14 @@
 import { query as q, Client } from 'faunadb';
-import { ulid } from 'ulid';
 
+import { FaunaEntity } from '../../../common/interfaces/fauna-entity.interface';
 import GitHubMember from '../../../common/interfaces/github-member.interface';
 
 const client = new Client({
   secret: process.env.FAUNA_SECRET as string,
 });
 
-export function bulkUpsertGitHubMembers(members: GitHubMember[]) {
-  return client.query<GitHubMember[]>(
+export async function bulkUpsertGitHubMembers(members: GitHubMember[]) {
+  const response = await client.query<FaunaEntity<GitHubMember>[]>(
     q.Map(
       members,
       q.Lambda(
@@ -31,4 +31,27 @@ export function bulkUpsertGitHubMembers(members: GitHubMember[]) {
       ),
     ),
   );
+
+  return response.map(({ data }) => data);
+}
+
+export async function updateGitHubMember(
+  member: GitHubMember,
+): Promise<GitHubMember> {
+  const response = await client.query<FaunaEntity<GitHubMember>>(
+    q.Let(
+      {
+        matchRef: q.Match(q.Index('github_member_by_id'), member.id),
+      },
+      q.If(
+        q.Exists(q.Var('matchRef')),
+        q.Update(q.Select(['ref'], q.Get(q.Var('matchRef'))), {
+          data: member,
+        }),
+        q.Create(q.Collection('github_members'), { data: member }),
+      ),
+    ),
+  );
+
+  return response.data;
 }

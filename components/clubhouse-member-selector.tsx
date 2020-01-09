@@ -2,19 +2,30 @@ import { Table, Combobox, toaster } from 'evergreen-ui';
 
 import ClubhouseMember from '../common/interfaces/clubhouse-member.interface';
 import GitHubMember from '../common/interfaces/github-member.interface';
+import Axios from 'axios';
 
 interface ClubhouseMemberSelectorProps {
   clubhouseMembers: ClubhouseMember[];
   gitHubMember: GitHubMember;
 }
 
-function selectClubhouseMember(
+async function selectClubhouseMember(
   gitHubMember: GitHubMember,
   clubhouseMember: ClubhouseMember,
 ) {
-  toaster.success(
-    `Associated ${gitHubMember.id} with ${clubhouseMember.name}!`,
-  );
+  gitHubMember.clubhouseMember = clubhouseMember;
+
+  try {
+    await Axios.patch(`/api/github/members`, gitHubMember);
+
+    toaster.success(
+      `Associated ${gitHubMember.id} with ${clubhouseMember.name}`,
+    );
+  } catch (error) {
+    toaster.danger(
+      `Failed to associate ${gitHubMember.id} with ${clubhouseMember.name}`,
+    );
+  }
 }
 
 export default ({
