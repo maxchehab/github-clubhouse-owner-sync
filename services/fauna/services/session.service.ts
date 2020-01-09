@@ -31,11 +31,13 @@ export async function createSession(
   return session;
 }
 
-export async function findSessionByID(
-  id: string,
-): Promise<FaunaEntity<Session> | null> {
+export async function findSessionByID(id: string): Promise<Session | null> {
   try {
-    return await client.query(q.Get(q.Match(q.Index('session_by_id'), id)));
+    const { data } = await client.query<FaunaEntity<Session>>(
+      q.Get(q.Match(q.Index('session_by_id'), id)),
+    );
+
+    return data;
   } catch (_error) {
     return null;
   }
