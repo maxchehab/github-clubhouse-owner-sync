@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/**/*", "use": "@now/node" },
+    {
+      "src": "package.json",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "api/(.*)",
+      "dest": "api/$1.ts"
+    }
+  ],
+  "env": {
+    "GITHUB_OAUTH_CLIENT_ID": "@github-oauth-client-id",
+    "GITHUB_OAUTH_SECRET": "@github-oauth-client-secret"
+  }
+}
