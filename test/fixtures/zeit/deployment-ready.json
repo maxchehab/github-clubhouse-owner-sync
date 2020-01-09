@@ -1,0 +1,35 @@
+{
+  "id": "uev_aQzDC1J474TpkqDUwOiqN095",
+  "ownerId": "team_DeiMsBWm938tj2KCnSikJCgO",
+  "type": "deployment-ready",
+  "createdAt": 1575855031269,
+  "payload": {
+    "deploymentId": "dpl_6fL5whHwZfPs6LDMe8Vf2TfzJufT",
+    "name": "deploy-bot",
+    "project": "QmU6vJtQApmt1CiiVeH29Dp5hf4tMcPYoTUb6jgsndbsiX",
+    "url": "deploy-bot-laueyuc2p.now.sh",
+    "plan": "pro",
+    "regions": ["sfo1"],
+    "type": "LAMBDAS",
+    "deployment": {
+      "id": "dpl_6fL5whHwZfPs6LDMe8Vf2TfzJufT",
+      "name": "deploy-bot",
+      "url": "deploy-bot-laueyuc2p.now.sh",
+      "meta": {
+        "githubDeployment": "1",
+        "githubOrg": "workos-inc",
+        "githubRepo": "deploy-bot",
+        "githubCommitOrg": "workos-inc",
+        "githubCommitRepo": "deploy-bot",
+        "githubCommitRef": "grab-access-token-when-team-configures-integration",
+        "githubCommitSha": "2ccf594ce2bb80163ba79d6aef501ec4c3aef109",
+        "githubCommitMessage": "Merge branch 'master' into grab-access-token-when-team-configures-integration",
+        "githubCommitAuthorLogin": "maxchehab",
+        "githubCommitAuthorName": "maxchehab"
+      }
+    }
+  },
+  "region": null,
+  "teamId": "team_DeiMsBWm938tj2KCnSikJCgO",
+  "userId": "jJBsqVeEbckazbUGIKZHrWr2"
+}

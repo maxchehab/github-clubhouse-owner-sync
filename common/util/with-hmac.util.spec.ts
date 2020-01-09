@@ -2,8 +2,8 @@ import axios from 'axios';
 import http from 'http';
 import listen from 'test-listen';
 
-import closeServer from '../../src/test/close-server';
-import createTestLambda from '../../src/test/create-test-lambda';
+import closeServer from '../../test/close-server';
+import createTestLambda from '../../test/create-test-lambda';
 import generateHMAC from './generate-hmac.util';
 import lambda from './lambda.util';
 import withHMAC, { SigParser } from './with-hmac.util';

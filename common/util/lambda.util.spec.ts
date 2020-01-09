@@ -3,8 +3,8 @@ import http from 'http';
 import listen from 'test-listen';
 
 import { HttpException } from '../exceptions/http.exception';
-import closeServer from '../../src/test/close-server';
-import createTestLambda from '../../src/test/create-test-lambda';
+import closeServer from '../../test/close-server';
+import createTestLambda from '../../test/create-test-lambda';
 import lambda from './lambda.util';
 
 describe('Lambda', () => {

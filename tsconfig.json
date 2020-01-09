@@ -4,11 +4,7 @@
     "target": "esnext",
     "sourceMap": true,
     "moduleResolution": "node",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,12 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "exclude": [
-    "out",
-    ".next"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts"
-  ]
+  "exclude": ["out", ".next", "src"],
+  "include": ["next-env.d.ts", "**/*.ts"]
 }

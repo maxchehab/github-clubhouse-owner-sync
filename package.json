@@ -33,7 +33,8 @@
     "react-dom": "^16.12.0"
   },
   "scripts": {
-    "build": "ts-node src/fauna/scripts/setup.ts && next build",
+    "build": "tsc -p tsconfig.json",
+    "fauna:setup": "ts-node src/fauna/scripts/setup.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "yarn jest"
   },
@@ -47,6 +48,10 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/src/"
+    ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "setupFiles": [
