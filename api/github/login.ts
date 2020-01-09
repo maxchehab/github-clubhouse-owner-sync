@@ -7,8 +7,8 @@ export default lambda(async (_req: NextApiRequest, res: NextApiResponse) => {
     .status(302)
     .setHeader(
       'location',
-      `https://github.com/login/oauth/authorize?scope=user:email&client_id=${process.env.GITHUB_OAUTH_CLIENT_ID}`,
+      `https://github.com/login/oauth/authorize?scope=read:org&client_id=${process.env.GITHUB_OAUTH_CLIENT_ID}`,
     );
 
-  res.send(null);
+  return res.send(null);
 });

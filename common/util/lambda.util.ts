@@ -9,7 +9,9 @@ export default function lambda(route: Route) {
     try {
       await route(req, res);
     } catch (error) {
-      console.error(error);
+      if (process.env.NODE_ENV !== 'test') {
+        console.error(error);
+      }
 
       const { status = 500, message = error } = error as HttpException;
 

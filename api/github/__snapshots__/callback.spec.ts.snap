@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api/github/callback with GET api/github/callback with invalid user with an error from GitHub during authentication returns a 500 1`] = `
+Object {
+  "message": "GitHub responded with error code 'bad_verification_code'.",
+}
+`;
+
+exports[`api/github/callback with GET api/github/callback with invalid user with no read:org scope returns a 400 1`] = `
+Object {
+  "message": "Invalid scope. Received 'undefined'. Requires 'read:org'.",
+}
+`;
+
+exports[`api/github/callback with GET api/github/callback with invalid user with token_type other than bearer returns a 400 1`] = `
+Object {
+  "message": "Invalid token type. Received 'undefined'. Requires 'bearer'.",
+}
+`;
+
+exports[`api/github/callback with GET api/github/callback with invalid user with user not a member of the allow-listed org returns a 403 1`] = `
+Object {
+  "message": "You are not a member of the allow-listed GitHub organization.",
+}
+`;
