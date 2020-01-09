@@ -28,19 +28,26 @@ export default ({ gitHubMembers, clubhouseMembers }: MemberTableProps) => {
         />
         <Table.TextHeaderCell>Clubhouse Account</Table.TextHeaderCell>
       </Table.Head>
-      <Table.Body height={'70vh'}>
-        {members.map(({ avatar, id }) => (
-          <Table.Row key={id}>
-            <Table.Cell display="flex" alignItems="center">
-              <Avatar name={id} src={avatar} />
-              <Text marginLeft={8} size={300} fontWeight={500}>
-                {id}
-              </Text>
-            </Table.Cell>
+      <Table.Body maxHeight={'70vh'}>
+        {members.map(member => {
+          const { id, avatar } = member;
 
-            <ClubhouseMemberSelector clubhouseMembers={clubhouseMembers} />
-          </Table.Row>
-        ))}
+          return (
+            <Table.Row key={id}>
+              <Table.Cell display="flex" alignItems="center">
+                <Avatar name={id} src={avatar} />
+                <Text marginLeft={8} size={300} fontWeight={500}>
+                  {id}
+                </Text>
+              </Table.Cell>
+
+              <ClubhouseMemberSelector
+                clubhouseMembers={clubhouseMembers}
+                gitHubMember={member}
+              />
+            </Table.Row>
+          );
+        })}
       </Table.Body>
     </Table>
   );
