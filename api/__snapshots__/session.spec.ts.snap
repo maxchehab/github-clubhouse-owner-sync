@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api/github/session with GET api/github/session returns session without token 1`] = `
+Object {
+  "expires_at": 1578548737237,
+  "id": "sess_01DY49R4RBSET4H39RX7JKR0AG",
+  "name": "John Smith",
+}
+`;
