@@ -10,15 +10,15 @@ interface AccessTokenResponse {
 }
 
 interface GitHubMember {
+  name: string;
   login: string;
 }
 
 export async function isMemberOfOrg(
   token: string,
+  login: string,
   orgID: string,
 ): Promise<boolean> {
-  const { login } = await getGitHubMember(token);
-
   const { status } = await Axios.get(
     `https://api.github.com/orgs/${orgID}/members/${login}`,
     {

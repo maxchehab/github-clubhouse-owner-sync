@@ -5,9 +5,9 @@ interface SubDeployment {
   state: DeploymentState;
 }
 
-export default interface Deployment {
-  commit: string;
-  frontend: SubDeployment;
-  api: SubDeployment;
-  state: DeploymentState;
+export default interface Session {
+  id: string;
+  name: string;
+  expires_at: number;
+  token: string;
 }

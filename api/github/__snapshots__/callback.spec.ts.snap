@@ -23,3 +23,9 @@ Object {
   "message": "You are not a member of the allow-listed GitHub organization.",
 }
 `;
+
+exports[`api/github/callback with GET api/github/callback with valid user creates a session 1`] = `
+Array [
+  "sid=sess_123; HttpOnly; Path=/; Expires=Thu, 01 Jan 1970 00:00:10 GMT",
+]
+`;

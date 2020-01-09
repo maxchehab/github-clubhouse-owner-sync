@@ -1,8 +1,6 @@
 import { query as q, Client } from 'faunadb';
 
-import createDeploymentCommitIndex from '../migrations/create-deployment-commit-index';
-import createDeployments from '../migrations/create-deployments';
-import createZeitTeams from '../migrations/create-zeit-teams';
+import createSessions from '../migrations/create-sessions';
 import sleep from '../../../common/util/sleep.util';
 
 type Migration = (client: Client) => Promise<void>;
@@ -15,11 +13,7 @@ const client = new Client({
   secret: process.env.FAUNA_SECRET as string,
 });
 
-const migrations: Migration[] = [
-  createDeployments,
-  createZeitTeams,
-  createDeploymentCommitIndex,
-];
+const migrations: Migration[] = [createSessions];
 
 export default async function setupFauna(options: MigrationOptions = {}) {
   if (options.dropSchema) {

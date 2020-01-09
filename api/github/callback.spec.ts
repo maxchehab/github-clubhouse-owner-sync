@@ -4,6 +4,7 @@ import listen from 'test-listen';
 
 import { HttpException } from '../../common/exceptions/http.exception';
 import * as GitHubService from '../../services/github/github.service';
+import * as SessionService from '../../services/fauna/services/session.service';
 import callback from './callback';
 import closeServer from '../../test/close-server';
 import createTestLambda from '../../test/create-test-lambda';
@@ -23,7 +24,42 @@ describe('api/github/callback', () => {
 
   describe('with GET api/github/callback', () => {
     describe('with valid user', () => {
-      it('creates a session', () => {});
+      beforeEach(() => {
+        jest
+          .spyOn(GitHubService, 'getGitHubMember')
+          .mockImplementationOnce(async () => ({
+            login: 'username',
+            name: 'John Smith',
+          }));
+
+        jest
+          .spyOn(GitHubService, 'getAccessToken')
+          .mockImplementationOnce(async () => 'access-token');
+
+        jest
+          .spyOn(GitHubService, 'isMemberOfOrg')
+          .mockImplementationOnce(async () => true);
+
+        jest
+          .spyOn(SessionService, 'createSession')
+          .mockImplementationOnce(async () => ({
+            id: 'sess_123',
+            name: 'John Smith',
+            expires_at: 10000,
+            token: 'access-token',
+          }));
+      });
+
+      it('creates a session', async () => {
+        const { status, headers } = await axios.get(url, {
+          maxRedirects: 0,
+          validateStatus: () => true,
+        });
+
+        expect(status).toEqual(302);
+        expect(headers.location).toEqual('/');
+        expect(headers['set-cookie']).toMatchSnapshot();
+      });
     });
 
     describe('with invalid user', () => {
@@ -95,6 +131,13 @@ describe('api/github/callback', () => {
 
       describe('with user not a member of the allow-listed org', () => {
         beforeEach(() => {
+          jest
+            .spyOn(GitHubService, 'getGitHubMember')
+            .mockImplementationOnce(async () => ({
+              login: 'username',
+              name: 'John Smith',
+            }));
+
           jest
             .spyOn(GitHubService, 'getAccessToken')
             .mockImplementationOnce(async () => 'access-token');
