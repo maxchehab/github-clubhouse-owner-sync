@@ -14,7 +14,7 @@ export default ({ gitHubMembers, clubhouseMembers }: MemberTableProps) => {
   const [members, setMembers] = useState(gitHubMembers);
 
   return (
-    <Table border width={'40vw'}>
+    <Table border>
       <Table.Head>
         <Table.SearchHeaderCell
           onChange={value =>

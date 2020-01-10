@@ -79,3 +79,19 @@ To create an Organization Webhook:
 ### GitHub Org ID
 
 The required `GITHUB ORG ID` is simply the string of your organization's name.
+
+## Endpoint Reconfiguration
+
+In previous steps we added a temporary **Authorization callback URL** and **Payload URL**. Once the deployment is complete you must replace these temporary values using the alias that Zeit provisioned (or one that you add manually).
+
+Using `https://clubhouse-sync.now.sh` as an example:
+
+### Authorization callback URL
+
+1. Navigate to the OAuth Application you created in the [previous step](#github-oauth-credentials). https://github.com/settings/developers
+2. Update the **Authorization callback URL** to `https://clubhouse-sync.now.sh/api/github/callback`
+
+### Payload URL
+
+1. Navigate to the Organization Webhook you created in the [previous step](#github-organization-webhook). `https://github.com/organizations/{org-name}/settings/hooks`
+2. Update the **Payload URL** to `https://clubhouse-sync.now.sh/api/github/webhook`
