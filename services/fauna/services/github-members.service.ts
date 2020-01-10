@@ -55,3 +55,17 @@ export async function updateGitHubMember(
 
   return response.data;
 }
+
+export async function findGitHubMemberByID(
+  id: string,
+): Promise<GitHubMember | null> {
+  try {
+    const { data } = await client.query<FaunaEntity<GitHubMember>>(
+      q.Get(q.Match(q.Index('github_member_by_id'), id)),
+    );
+
+    return data;
+  } catch (_error) {
+    return null;
+  }
+}

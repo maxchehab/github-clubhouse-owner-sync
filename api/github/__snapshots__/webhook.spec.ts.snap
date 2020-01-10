@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api/github/webhook with POST api/github/webhook with invalid GitHub member returns invalid GitHub member message 1`] = `
+Object {
+  "message": "Invalid GitHub member",
+}
+`;
+
+exports[`api/github/webhook with POST api/github/webhook with invalid story ID returns invalid story id message 1`] = `
+Object {
+  "message": "Invalid story ID",
+}
+`;
+
+exports[`api/github/webhook with POST api/github/webhook with unlinked Clubhouse account returns unlinked Clubhouse account message 1`] = `
+Object {
+  "message": "No Clubhouse Account linked to GitHub member",
+}
+`;
+
+exports[`api/github/webhook with POST api/github/webhook with valid story and GitHub member updates story's owner 1`] = `
+Array [
+  "1161",
+  Object {
+    "id": "123",
+    "name": "John Smith",
+  },
+  "test-clubhouse-secret",
+]
+`;
+
+exports[`api/github/webhook with POST api/github/webhook with valid story and GitHub member updates story's owner 2`] = `
+Object {
+  "message": "Updated story owner",
+}
+`;

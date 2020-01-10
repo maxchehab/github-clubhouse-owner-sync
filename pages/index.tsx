@@ -2,11 +2,10 @@ import { Component } from 'react';
 import { NextPageContext } from 'next';
 import { Pane } from 'evergreen-ui';
 import { parseCookies } from 'nookies';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 import Avatar from '../components/avatar';
 import ClubhouseMember from '../common/interfaces/clubhouse-member.interface';
-import getBaseURL from '../common/util/get-base-url.util';
 import GitHubMember from '../common/interfaces/github-member.interface';
 import MemberTable from '../components/member-table';
 import Session from '../common/interfaces/session.interface';
@@ -20,7 +19,7 @@ interface Props {
 export default class extends Component<Props> {
   static async getInitialProps(ctx: NextPageContext) {
     if (ctx.res) {
-      const baseURL = getBaseURL(ctx);
+      const baseURL = process.env.BASE_URL;
       const { sid } = parseCookies(ctx);
 
       if (!sid) {
@@ -29,7 +28,6 @@ export default class extends Component<Props> {
         });
         ctx.res.end();
       }
-
       try {
         const sessionResponse = await axios.get<Session>(
           `${baseURL}/api/session`,
@@ -58,7 +56,9 @@ export default class extends Component<Props> {
           clubhouseMembers: clubhouseMembers.data,
         };
       } catch (error) {
-        console.log(error);
+        const { config, code, message } = error as AxiosError;
+
+        console.error({ config, code, message });
 
         ctx.res.writeHead(302, {
           Location: '/login',

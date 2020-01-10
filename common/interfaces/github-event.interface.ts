@@ -3,4 +3,7 @@ export default interface GitHubEvent {
   head_commit: {
     id: string;
   };
+  sender: {
+    login: string;
+  };
 }
