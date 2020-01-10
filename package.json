@@ -54,8 +54,7 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/src/"
+      "/node_modules/"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
