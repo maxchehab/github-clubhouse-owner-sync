@@ -14,7 +14,11 @@
     }
   ],
   "env": {
+    "CLUBHOUSE_SECRET": "@clubhouse_secret",
+    "FAUNA_SECRET": "@fauna_secret",
     "GITHUB_OAUTH_CLIENT_ID": "@github-oauth-client-id",
-    "GITHUB_OAUTH_SECRET": "@github-oauth-client-secret"
+    "GITHUB_OAUTH_SECRET": "@github-oauth-client-secret",
+    "GITHUB_ORG_HOOK_SECRET": "@github_org_hook_secret",
+    "GITHUB_ORG_ID": "@github_org_id"
   }
 }
