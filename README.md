@@ -57,7 +57,7 @@ To create an set of OAuth Credentials:
 
 1. Navigate to https://github.com/settings/applications/new
 2. Fill out the following fields like so:
-   <p align="center"><img height="400" src="/images/oauth-settings.png"></p>
+   <p align="left"><img height="400" src="/images/oauth-settings.png"></p>
 3. Create a temporary **Authorization callback URL**. You will be required to change this later within the setup.
 4. Save the **Client ID** as the required `GITHUB OAUTH CLIENT ID` in Zeit's template onboarding form.
 5. Save the **Client Secret** as the required `GITHUB OAUTH CLIENT SECRET` in Zeit's template onboarding form.
@@ -71,7 +71,7 @@ To create an Organization Webhook:
 1. Be an Organization Owner
 2. Create a new Organization Webhook `https://github.com/organizations/{org-name}/settings/hooks/new`
 3. Fill out the following fields like so:
-   <p align="center"><img height="400" src="/images/webhook-settings.png"></p>
+   <p align="left"><img height="400" src="/images/webhook-settings.png"></p>
 4. Create a temporary **Payload URL**. You will be required to change this later within the setup.
 5. Assert that you **only** have **Branch or tag creation** selected.
 6. Save the **Secret** you generated as the required `GITHUB ORG HOOK SECRET` in Zeit's template onboarding form.
